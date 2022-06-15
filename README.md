@@ -57,8 +57,7 @@ Your system must be able to list, create, and update User Stories.
     - The column titles are proper table headers.
     - There is an "Add a new User Story" link on the top of the page, pointing to the `/story` page.
     - The Story titles are links, pointing to the `/story/<id>` page where the User Story can be updated.
-    - The page follows this basic design: ![Super Sprinter 3000 - List.png]
-    (https://learn.code.cool/media/web-python/super-sprinter-3000-list.png)
+    - The page follows this basic design: (media/web-python/super-sprinter-3000-list.png)
 
 2. It is possible to add a new User Story through a web form on page `/story`.
     - The `/story` page shows an empty web form.
