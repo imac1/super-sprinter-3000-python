@@ -1,0 +1,18 @@
+.table {
+    border-spacing: 0;
+    margin: 1rem;
+}
+
+.table__row :nth-child(even) {
+    background-color: bisque;
+}
+
+.table__header {
+    background-color: azure;
+    text-align: left;
+}
+
+.table__cell {
+    padding: auto;
+    text-align: center;
+}

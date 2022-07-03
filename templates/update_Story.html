@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block head %}
+{% block title %} 
+<h1>Update User Story</h1>
+   {% endblock %}  
+{% endblock %}
+
+{% block content %} 
+<form action="/update_Story", method="post">
+  <p>
+   <label for="title">Story Title</label></br>
+   <input type="text" min="5" required>
+  </p>
+  <p>
+   <label for="user_story">User Story</label></br>
+   <textarea id="user_story" name="user_Story" rows="4" cols="60" required></textarea>
+  </p>
+  <p>
+   <label for="acceptance_criteria">Acceptance Criteria:</label></br>
+   <textarea id="acceptance_criteria" name="acceptance_criteria" rows="4" cols="60" required></textarea>
+  </p>
+  <P>
+   <label for="business_value">Business Value</label></br>
+   <input type="number" size="50" min="100" max="1500" step="100">
+  </P>
+  <p>
+     <label for="estimation">Estimation</label></br>
+     <input type="number" min="0.5" max="40" step="0.5" size="50">
+  </p>
+  <p>
+    <label for="status">Status</label>
+    <select name="status"></select></br>
+    <option>status</option>
+
+  </p>
+  <p>
+     <button type="submit">Update your story</button>
+  </p>
+
+
+
+</form>
+<br>
+
+
+
+{% endblock %}

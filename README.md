@@ -57,8 +57,8 @@ Your system must be able to list, create, and update User Stories.
     - The column titles are proper table headers.
     - There is an "Add a new User Story" link on the top of the page, pointing to the `/story` page.
     - The Story titles are links, pointing to the `/story/<id>` page where the User Story can be updated.
-    - The page follows this basic design: ![Super Sprinter 3000 - List.png]
-    (https://learn.code.cool/media/web-python/super-sprinter-3000-list.png)
+    - The page follows this basic design: ![Super Sprinter 3000 - Requirements](media/super-sprinter-3000-requirements.png)
+    ![Super Sprinter 3000 - List.png](media/super-sprinter-3000-requirements.png)
 
 2. It is possible to add a new User Story through a web form on page `/story`.
     - The `/story` page shows an empty web form.
@@ -72,7 +72,7 @@ Your system must be able to list, create, and update User Stories.
 
     - Clicking the "Add new User Story" button results in the form submitting the data that gets saved.
     - When a new User Story is saved, a unique `id` is generated for it.
-    - The page follows this basic design: ![Super Sprinter 3000 - Add.png](https://learn.code.cool/media/web-python/super-sprinter-3000-add.png)
+    - The page follows this basic design: ![Super Sprinter 3000 - Add.png](media/super-sprinter-3000-add.png))
 
 3. It is possible to update an existing User Story through a web form on page `/story/<id>`.
     - The `/story/<id>` page shows the same web form as on the "Add new" page but filled in with data of the given User Story.
@@ -87,7 +87,7 @@ Your system must be able to list, create, and update User Stories.
     - The "Status" field also appears as a dropdown value list, with options `planning`, `todo`, `in progress`, `review`, `done`.
  The current status of the User Story is selected by default.
     - Clicking the "Update User Story" button updates the existing entry and does not create a new one.
-    - The page follows this basic design: ![Super Sprinter 3000 - Add.png](https://learn.code.cool/media/web-python/super-sprinter-3000-update.png)
+    - The page follows this basic design: ![Super Sprinter 3000 - update.png](media/super-sprinter-3000-update.png)
 
 4. The application persists data using a `.csv` file.
     - The User Story list and the form data are loaded from a `.csv` file upon update.
