@@ -1,3 +1,4 @@
+from crypt import methods
 from flask import Flask, render_template, request, redirect, url_for
 import data_handler
 
@@ -19,9 +20,10 @@ def route_list():
 def route_story():
     return render_template('story.html')
 
-@app.route('/story/')
+
+@app.route('/story/', methods=["GET", "POST"])
 def update_story():
-    return render_template('update_Story.html')
+    return render_template('update_Story.html', status=data_handler.STATUSES)
 
 
 if __name__ == '__main__':
