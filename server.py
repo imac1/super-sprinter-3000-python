@@ -1,4 +1,5 @@
 from crypt import methods
+from statistics import mean
 from flask import Flask, render_template, request, redirect, url_for
 import data_handler
 
@@ -11,9 +12,9 @@ app = Flask(__name__)
 @app.route('/')
 @app.route('/list')
 def route_list():
-    user_stories = data_handler.get_all_user_story()
+    data_header, user_stories = data_handler.get_all_user_story()
 
-    return render_template('list.html', user_stories=user_stories)
+    return render_template('list.html', data_header=data_header, user_stories=user_stories)
 
 
 @app.route('/story')
@@ -21,9 +22,14 @@ def route_story():
     return render_template('story.html')
 
 
-@app.route('/story/', methods=["GET", "POST"])
+@app.route('/story/<id>', methods=["GET", "POST"])
 def update_story():
-    return render_template('update_Story.html', status=data_handler.STATUSES)
+    return render_template('update_story.html', status=data_handler.STATUSES)
+
+
+# @app.route('/story/<id>', methods="GET")
+# def list_stories():
+#     return render_template('update_story.html')
 
 
 if __name__ == '__main__':

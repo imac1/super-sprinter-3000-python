@@ -1,28 +1,29 @@
 {% extends "base.html" %}
 {% block title %}Super Sprinter 3000 - List {% endblock %}
 {% block content %}
-
-    <h1>List</h1>
-    <a href={{ url_for('route_story') }}>Go to the story page to add a story</a>
-    <table class="table">
-        <thead>
-            <tr class="table__header">
-                {% for value in user_stories %}
-                <th class="table__cell"> {{ value }} </th>
-                {% endfor %}
-            </tr>
-        </thead>
-        <tbody>
-            {% for row in user_stories %}
-            <tr class="table__row">
-                {% for cell in row %}
-                <td class="table__cell">{{cell}}</td>
-                {% endfor %}
-            </tr>
+`
+<h1>List</h1>
+<a href={{ url_for('route_story') }}>Go to the story page to add a story</a>
+<table border="1">
+    <thead>
+        <tr>
+            {% for item in data_header %}
+            <th>
+                {{ item }}
+            </th>
             {% endfor %}
-        </tbody>
-
-    </table>
-    <table>
-
+        </tr>
+    </thead>
+    <tbody>
+        {% for item in user_stories %}
+        <tr>
+            {% for key, value in item.items() %}
+            <td>
+                {{value}}
+            </td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

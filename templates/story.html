@@ -1,11 +1,13 @@
  {% extends 'base.html' %}
  {% block head %}
  {% block title %} 
+
  <h1>Add User Story</h1>
     {% endblock %}  
  {% endblock %}
 
  {% block content %} 
+ <!-- <a href={{ url_for('update_story') }}>Go to the story page to add a story</a> -->
  <form action="/story", method="post">
    <p>
     <label for="title">Story Title</label></br>
