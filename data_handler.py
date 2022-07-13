@@ -22,23 +22,37 @@ def get_all_user_story():
     return DATA_HEADER, stories_list
 
 
-def update_csv_data():
+def update_csv_data(new_story):
+    print(new_story)
     tempfile = NamedTemporaryFile(mode='w', delete=False)
     # TODO check if id exists
-    id_list = []
-    new_data = {'id': '2', 'title': 't', 'user_story': 'w', 'acceptance_criteria': 'good', 'business_value': 'not', 'estimation': 'yesterday', 'status': 'none'}
-    with open(DATA_FILE_PATH, 'r') as csvfile, tempfile:
-        reader = csv.DictReader(csvfile, fieldnames=DATA_HEADER)
-        writer = csv.DictWriter(tempfile, fieldnames=DATA_HEADER)
-        for row in reader:
-            if row['id'] == str(new_data['id']):
-                print('update row')
-                writer.writerow(new_data)
-            writer.writerow(row)
+    if 'id' in new_story:
+        print('id')
+        with open(DATA_FILE_PATH, 'r') as csvfile, tempfile:
+            reader = csv.DictReader(csvfile, fieldnames=DATA_HEADER)
+            writer = csv.DictWriter(tempfile, fieldnames=DATA_HEADER)
+            for row in reader:
+                if row['id'] == str(new_story['id']):
+                    print('update row')
+                    writer.writerow(new_story)
+                writer.writerow(row)
+                csvfile.close()
+                tempfile.close()
+            shutil.move(tempfile.name, DATA_FILE_PATH)
+    else:
+        print(new_story)
+        header, stories = get_all_user_story()
+        new_id = int(stories[-1]['id']) + 1
+        print(new_id)
+        new_dict = {'id': str(new_id)}
+        new_dict.update(new_story)
+        print(new_dict)
+        with open(DATA_FILE_PATH, 'a') as f:
+            writer = csv.DictWriter(f, fieldnames=DATA_HEADER)
+            writer.writerow(new_dict)
 
-    shutil.move(tempfile.name, DATA_FILE_PATH)
+  
 
 
-# print(get_all_user_story())
-
-
+# new_stori = {'title': 'tit', 'user_story': 'w', 'acceptance_criteria': 'good', 'business_value': 'not', 'estimation': 'yesterday', 'status': 'none'}
+# print(update_csv_data(new_stori))
