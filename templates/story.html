@@ -7,7 +7,6 @@
 {% endblock %}
 
 {% block content %}
-<a href={{ url_for('add_story') }}>Go to the story page to edit a story</a>
 <form action="/story" , method="POST">
    <p>
       <label for="title">Story Title</label></br>
@@ -32,9 +31,6 @@
    <p>
       <button type="submit">Save your story</button>
    </p>
-
-
-
 </form>
 <br>
 

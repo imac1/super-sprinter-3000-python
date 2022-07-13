@@ -26,13 +26,19 @@ def add_story():
         'business_value': new_business_value, 'estimation': new_estimation}
         data_handler.update_csv_data(saved_data)
         return redirect('/story')
-        
     return render_template("story.html")
 
 
-@app.route('/story/<int:id>', methods=["GET", "POST"])
+@app.route('/story/<id>', methods=["GET", "POST"])
 def edit_story(id):
-    return render_template('update_story.html', status=data_handler.STATUSES)
+    data_header, user_stories = data_handler.get_all_user_story()
+    if request.method == "GET":
+        for story in user_stories:
+            if story.get('id') == str(id):
+                story_title = story['title']
+                user_story = story['user_story']
+                acceptance_criteria = story['acceptance_criteria']
+                return render_template('update_story.html', status=data_handler.STATUSES, story_title=story_title, user_story=user_story, acceptance_criteria=acceptance_criteria)
 
 
 if __name__ == '__main__':

@@ -4,6 +4,7 @@
 `
 <h1>List</h1>
 <a href={{ url_for('add_story') }}>Go to the story page to add a story</a>
+<a href={{ url_for('edit_story', id=5) }}>Go to the story page to add a story</a>
 <table border="1">
     <thead>
         <tr>
@@ -18,12 +19,17 @@
         {% for item in user_stories %}
         <tr>
             {% for key, value in item.items() %}
+            {% if key == 'title' %}
             <td>
-                {{value}}
+                <a href={{ url_for('edit_story', id=item.items()['id']) }}>{{ value}}</a>
             </td>
+            {% else %}
+            <td>{{ value }}</td>
+            {% endif %}
             {% endfor %}
         </tr>
         {% endfor %}
     </tbody>
 </table>
+
 {% endblock %}
