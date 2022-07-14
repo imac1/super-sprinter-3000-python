@@ -38,7 +38,19 @@ def edit_story(id):
                 story_title = story['title']
                 user_story = story['user_story']
                 acceptance_criteria = story['acceptance_criteria']
-                return render_template('update_story.html', status=data_handler.STATUSES, story_title=story_title, user_story=user_story, acceptance_criteria=acceptance_criteria)
+                business_value  = story['business_value']
+                estimation = story['estimation']
+                return render_template('update_story.html', status=data_handler.STATUSES, story_title=story_title, user_story=user_story, acceptance_criteria=acceptance_criteria, business_value=business_value, estimation=estimation)
+    elif request.method == "POST":
+        for story in user_stories:
+            if story.get('id') == str(id):
+                story['title'] = request.form.get('title')
+                story['user_story'] = request.form.get('user_story')
+                story['acceptance_criteria'] = request.form.get('acceptance_criteria')
+                story['business_value'] = request.form.get('business_value')
+                story['estimation'] = request.form.get('estimation')
+                data_handler.update_csv_data(story)
+                return redirect(url_for('list_stories'))
 
 
 if __name__ == '__main__':
